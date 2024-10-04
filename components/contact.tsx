@@ -40,7 +40,12 @@ export default function Contact() {
 
       <form
         className='mt-10 flex flex-col dark:text-black'
-        action={async (formData) => {
+        onSubmit={async (e: React.FormEvent<HTMLFormElement>) => {
+          e.preventDefault();
+
+          const form = e.currentTarget;
+          const formData = new FormData(form);
+
           const { error } = await sendEmail(formData);
 
           if (error) {
