@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useRef } from "react";
 import SectionHeading from "./section-heading";
 import { motion } from "framer-motion";
 import useSectionInView from "@/hooks/useSectionInView";
@@ -10,6 +10,8 @@ import toast from "react-hot-toast";
 
 export default function Contact() {
   const { ref } = useSectionInView("Contact");
+  const emailRef = useRef<HTMLInputElement>(null);
+  const messageRef = useRef<HTMLTextAreaElement>(null);
 
   return (
     <motion.section
@@ -53,10 +55,18 @@ export default function Contact() {
             return;
           }
 
+          if (emailRef.current) {
+            emailRef.current.value = "";
+          }
+          if (messageRef.current) {
+            messageRef.current.value = "";
+          }
+
           toast.success("Email sent successfully!");
         }}
       >
         <input
+          ref={emailRef}
           type='email'
           name='email'
           required
@@ -65,6 +75,7 @@ export default function Contact() {
           className='h-14 rounded-lg border border-black/10 p-4 dark:bg-white dark:bg-opacity-80 dark:focus:bg-opacity-100 transition-all dark:outline-none'
         />
         <textarea
+          ref={messageRef}
           name='message'
           required
           maxLength={500}
