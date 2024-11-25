@@ -6,34 +6,15 @@ import corpcommentImg from '@/public/corpcomment.png'
 import rmtdevImg from '@/public/rmtdev.png'
 import wordanalyticsImg from '@/public/wordanalytics.png'
 
-export const links = [
-  {
-    name: 'Home',
-    hash: '#home',
-  },
-  {
-    name: 'About',
-    hash: '#about',
-  },
-  {
-    name: 'Projects',
-    hash: '#projects',
-  },
-  {
-    name: 'Skills',
-    hash: '#skills',
-  },
-  {
-    name: 'Experience',
-    hash: '#experience',
-  },
-  {
-    name: 'Contact',
-    hash: '#contact',
-  },
-] as const
+interface Experience {
+  title: string
+  location: string
+  description: string
+  icon: React.ReactNode
+  date: string
+}
 
-export const experiencesData = [
+export const experiencesData: Experience[] = [
   {
     title: 'Kharkiv National University of Radio Electronics',
     location: 'Kharkiv, Ukraine',
@@ -50,7 +31,7 @@ export const experiencesData = [
     icon: React.createElement(FaReact),
     date: '2024',
   },
-] as const
+]
 
 export const projectsData = [
   {
@@ -73,7 +54,7 @@ export const projectsData = [
     tags: ['React', 'Next.js', 'SQL', 'Tailwind', 'Framer'],
     imageUrl: wordanalyticsImg,
   },
-] as const
+]
 
 export const skillsData = [
   'HTML',
@@ -92,4 +73,13 @@ export const skillsData = [
   'Express',
   'PostgreSQL',
   'Framer Motion',
+]
+
+export const links = [
+  { name: 'Home', hash: '#home' },
+  { name: 'About', hash: '#about' },
+  { name: 'Projects', hash: '#projects' },
+  { name: 'Skills', hash: '#skills' },
+  { name: 'Experience', hash: '#experience' },
+  { name: 'Contact', hash: '#contact' },
 ] as const
